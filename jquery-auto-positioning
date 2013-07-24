@@ -1,0 +1,93 @@
+<!-- THIS CODE IS UNDER FULL COPYRIGHT AND UN-DISTRIBUTING LICENSE OF 
+A 100 WEB SOLUTIONS (http://www.a100websolutions.in). CODE MAY BE USED OR DISTRIBUTED 
+UNDER SIMILAR AND UNCHANGED LICENSE AND FULL COPYRIGHT TO A 100 WEB SOLUTIONS
+AND WITHOUT ANY CHANGES IN THE CORE CODING TECHNIQUES AND CONCEPT.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JQuery Auto Positioning - Demos | A 100 Web Solutions</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <style>
+            body{
+                background: url(images/bg2.png) repeat;
+            }
+            
+            #container{
+                margin: 200px auto auto auto;width: 500px;height: auto;overflow: auto;border: 1px solid #ddd;
+                background: #f8f8f8;
+                
+                -box-shadow: 0px 2px 5px #ddd;
+                -webkit-box-shadow: 0px 2px 5px #ddd;
+                -moz-box-shadow: 0px 2px 5px #ddd;
+                -o-box-shadow: 0px 2px 5px #ddd;
+                -ms-box-shadow: 0px 2px 5px #ddd;
+            }
+            
+            #container form{
+                margin: 20px auto;width: 90%;height: auto;overflow: auto;
+                text-align: center
+            }
+            
+            .inputs{
+                width: 90%;height: 30px;padding-left: 2%;margin: 10px auto;float: left;
+                border: 1px solid #ddd
+            }
+            
+            .submit{
+                border: 0;background: url('images/submit-bg-2.png') 0 0 repeat-x;width: 100px;height: 30px;
+                margin: 10px auto;float: left;color: white
+            }
+            
+            .submit:hover{
+                background-position: 0 -30px;cursor: pointer
+            }
+            
+            .links{
+                border: 0;background: transparent;margin: 10px auto;float: right;margin-right: 35px;
+                cursor: pointer;text-decoration: none;color: #444
+            }
+            
+            #forgot_password_panel{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <form action="" method="POST">
+                <input type="text" name="username" size="50" class="inputs"/><br/>
+                <input type="password" name="password" size="50" class="inputs"/><br/>
+                <input type="submit" value="Submit" name="submit" class="submit"/>
+                <a href="#" class="links">Forgot Password</a>
+            </form>
+            <form action="" method="POST" id="forgot_password_panel">
+                <input type="text" name="username" size="50" class="inputs"/><br/>
+                <input type="password" name="password" size="50" class="inputs"/><br/>
+                <input type="submit" value="Get Password" name="get-password" class="submit"/>                
+            </form>            
+        </div>
+        <script>
+$(document).ready(function(){      
+      var orig_pos = $(document).height() - $('#container').height();
+            orig_pos = orig_pos/2;
+  			
+$(".links").click(function(){
+if($("#forgot_password_panel").is(':hidden')){
+$("#forgot_password_panel").fadeIn("1500");
+var new_pos = $(document).height() - $('#container').height();
+new_pos = new_pos/2;
+$('#container').animate({"margin-top":new_pos}, 500);
+}
+else{
+$("#forgot_password_panel").fadeOut("1500",function(){
+$('#container').animate({"margin-top":orig_pos}, 500);	});					
+	}				
+});
+            
+           }); 
+
+        </script>
+    </body>
+</html>
